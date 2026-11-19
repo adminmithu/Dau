@@ -1,0 +1,186 @@
+/* styles.css - Ultra-Premium Google Meet + Apple / Instagram Polish */
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+:root {
+  --spring-easing: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Body Styles */
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.015em;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* High-End Spring Hover for Story Cards */
+.story-card {
+  transition: transform 0.28s var(--spring-easing), box-shadow 0.28s var(--spring-easing);
+  will-change: transform, box-shadow;
+}
+
+.story-card:hover {
+  transform: translateY(-4px) scale(1.025);
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.16), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+}
+
+/* Instagram-style Glowing Story Ring */
+.story-ring-unseen {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  padding: 2.2px;
+}
+
+.story-ring-active-call {
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%);
+  padding: 2.5px;
+  animation: pulseGradient 2.5s ease infinite;
+}
+
+@keyframes pulseGradient {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(6, 182, 212, 0.9));
+  }
+}
+
+/* Photo Scrim Gradient */
+.story-scrim-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.05) 35%,
+    rgba(0, 0, 0, 0.25) 60%,
+    rgba(0, 0, 0, 0.88) 100%
+  );
+}
+
+/* Active Speaker Organic Siri/Ripple Waves */
+@keyframes organicRipple {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.speaking-ripple-1 {
+  animation: organicRipple 1.8s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.speaking-ripple-2 {
+  animation: organicRipple 1.8s cubic-bezier(0, 0.2, 0.8, 1) infinite 0.6s;
+}
+
+.speaking-active-ring {
+  box-shadow: 0 0 0 3px #1a73e8, 0 0 24px rgba(26, 115, 232, 0.5) !important;
+}
+
+/* Flying Reaction Emojis - Ultra Fast & Snappy Meet Style */
+@keyframes floatUpSmooth {
+  0% {
+    transform: translateY(0) scale(0.4) rotate(var(--rot, 0deg));
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-90px) scale(1.3) rotate(calc(var(--rot, 0deg) * -1));
+  }
+  60% {
+    opacity: 0.95;
+    transform: translateY(-420px) scale(1.05) rotate(var(--rot, 0deg));
+  }
+  100% {
+    transform: translateY(-720px) scale(0.8) rotate(calc(var(--rot, 0deg) * 1.5));
+    opacity: 0;
+  }
+}
+
+.flying-emoji {
+  position: fixed;
+  bottom: 85px;
+  font-size: 2.3rem;
+  user-select: none;
+  pointer-events: none;
+  z-index: 9999;
+  animation: floatUpSmooth 1.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Laser Pointer Effect */
+.laser-cursor {
+  cursor: none !important;
+}
+
+.laser-pointer-dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ff2a2a;
+  box-shadow: 0 0 16px #ff0000, 0 0 28px #ff4444;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 40;
+  transition: opacity 0.2s ease;
+}
+
+/* Soundboard Button Bounce */
+.soundboard-btn:active {
+  transform: scale(0.92);
+}
+
+/* Navigation Active Tab */
+.nav-tab-active {
+  color: #1a73e8 !important;
+}
+.dark .nav-tab-active {
+  color: #60a5fa !important;
+}
+
+/* Ensure icons, SVGs, and spans inside clickable elements don't swallow clicks */
+button svg, button i, a svg, a i {
+  pointer-events: none;
+}
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(140, 150, 170, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(140, 150, 170, 0.5);
+}
+
+/* Participant Card Controls on Hover */
+.participant-tile .tile-actions {
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.participant-tile:hover .tile-actions {
+  opacity: 1;
+}

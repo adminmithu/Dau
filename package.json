@@ -1,0 +1,12 @@
+{
+  "name": "nova-meet",
+  "version": "2.0.0",
+  "description": "Voice-First Collaboration, Screen Sharing & Stories Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["webrtc", "audio-huddle", "screen-share", "stories", "google-meet-alternative"],
+  "author": "Nova Team",
+  "license": "MIT"
+}
